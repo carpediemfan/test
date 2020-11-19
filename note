@@ -1,0 +1,35 @@
+requests模块
+urllib模块
+requess模块
+使用 浏览器发起
+如何使用：（requests编码流程）
+ -指定url
+ -发起请求
+ -获取相响应数据
+ -持久化存储 存储写入数据
+
+环境的安装
+pip install requests
+编码
+-需求：爬去搜狗首页的数据
+import requests
+if __name__ == "__main__":
+    #1指定url
+    url = 'https://www.sogou.com/'
+    #2发起请求 get请求 也能post请求
+    #get方法会给出一个响应对象
+    response = requests.get(url=url)
+    #3获取响应数据 响应对象当中  请求成功后会有响应对象
+    page_text = response.text
+    print(page_text)
+    #4持久化存储
+    with open('./sogou.html','w',encoding='utf-8') as fp:
+        fp.write(page_text)
+    print('爬去数据结束！')
+
+    #爬取网页信息保存 用反扒机制
+    #破解百度翻译 ua伪装要用到 有bug json保存不可
+    #豆瓣爬取喜剧 用数据解析 当前地址的url ajax请求到json类型数据 滚轮到底部加载新的内容有ajax请求数据包
+    #爬取肯德基位置信息 作业可 跟豆瓣的一样
+    #爬取药监局数据 当前页面的数据  许可证相关的详情数据源
+    
